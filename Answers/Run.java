@@ -2,12 +2,7 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Run {
-    Book bk=new Book();
     CLI tab=new CLI();
-    Normaluser u=new Normaluser();
-    Admin ad=new Admin();
-    Library bc=new Library();
-    Rent rt=new Rent();
     LocalTime t=LocalTime.now();
     LocalTime t1=LocalTime.of(9,00,00);
     LocalTime t2=LocalTime.of(23,00,00);
@@ -15,8 +10,8 @@ public class Run {
         Scanner sc=new Scanner(System.in);
         Scanner sc2=new Scanner(System.in);
         if (t.isAfter(t1) && t.isBefore(t2)) {
-            u.makeaccount("Aran Rafiaei","40230212043");
-            ad.addAdmin("Aran Rafiaei","40230212043");
+            tab.nu.makeaccount("Aran Rafiaei","40230212043");
+            tab.addd.addAdmin("Aran Rafiaei","40230212043");
             tab.libaddbook("binavayan","Victor Hogo","ketab dar morede chand binavast.");
             tab.libaddbook("bishoori","Xavier Crement","ye ketab dar morede bishoori.");
             tab.libaddbook("nooshirvani kojast","nashenas","addresse nooshivani be zaban haye mokhtalef.");
@@ -33,7 +28,7 @@ public class Run {
                         System.out.print("enter the password: ");
                         for (;;) {
                             String pass=sc.nextLine();
-                            if (ad.adminsave.containsValue(pass)) {
+                            if (tab.addd.adminsave.containsValue(pass)) {
                                 name="Aran Rafiaei";
                                 break;
                             } else {
@@ -47,7 +42,7 @@ public class Run {
                         System.out.print("my name is: ");
                         for (;;) {
                             name=sc.nextLine();
-                            if (u.mempasssave.containsKey(name)==false) {
+                            if (tab.nu.mempasssave.containsKey(name)==false) {
                                 break;
                             } else {
                                 System.out.print("your name must be unique.try another: ");
@@ -57,13 +52,13 @@ public class Run {
                         String pasw;
                         while (true) {
                             pasw=sc2.nextLine();
-                            if (u.mempasssave.containsValue(pasw)) {
+                            if (tab.nu.mempasssave.containsValue(pasw)) {
                                 System.out.print("this password is not unique: ");
                             } else {
                                 break;
                             }
                         }
-                        u.makeaccount(name,pasw);
+                        tab.nu.makeaccount(name,pasw);
                         l=true;
                         System.out.println("now you have an account.");
                         break;
@@ -120,7 +115,7 @@ public class Run {
                         m=true;
                         System.out.print("enter the admin password: ");
                         String adminpass=sc.nextLine();
-                        if (ad.adminsave.containsValue(adminpass)==false) {
+                        if (tab.addd.adminsave.containsValue(adminpass)==false) {
                             System.out.println("seems like you are not admin.");
                             break;
                         }
@@ -129,7 +124,7 @@ public class Run {
                         System.out.print("enter a password: ");
                         String mpass=sc2.nextLine();
                         boolean a=false;
-                        if (u.mempasssave.containsKey(mname)==false && u.mempasssave.containsValue(mpass)==false) {
+                        if (tab.nu.mempasssave.containsKey(mname)==false && tab.nu.mempasssave.containsValue(mpass)==false) {
                             a=true;
                         }
                         tab.libaddmember(mname,mpass);
@@ -141,7 +136,7 @@ public class Run {
                                 boolean b = false;
                                 switch (ans) {
                                     case "yes":
-                                        ad.addAdmin(mname, mpass);
+                                        tab.addd.addAdmin(mname, mpass);
                                         System.out.println("admin added!");
                                         b = true;
                                         break;
@@ -174,7 +169,7 @@ public class Run {
                         m=true;
                         System.out.print("enter the admin password: ");
                         String pw=sc.nextLine();
-                        if (ad.adminsave.containsValue(pw)==false) {
+                        if (tab.addd.adminsave.containsValue(pw)==false) {
                             System.out.println("seems like you are not admin.");
                             break;
                         }
